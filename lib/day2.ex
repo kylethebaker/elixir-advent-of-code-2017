@@ -4,14 +4,12 @@
 
 defmodule AdventOfCode2017.Day2 do
   @input "data/day2.input"
-    |> File.read!
-    |> String.trim
-    |> String.split("\n")
-    |> Enum.map(fn x ->
-      String.split(x) |> Enum.map(&String.to_integer/1)
-    end)
 
-  def input, do: @input
+  def input,
+    do: for line <- @input |> File.read! |> String.split("\n", trim: true),
+      do: for x <- String.split(line, "\t"),
+        do: String.to_integer(x)
+
 end
 
 #------------------------------------------------------------------------------
@@ -24,11 +22,8 @@ defmodule AdventOfCode2017.Day2.Part1 do
   def solve_puzzle,
     do: input() |> solve_checksum
 
-  def solve_checksum(input) do
-    input
-    |> Enum.map(&row_checksum/1)
-    |> Enum.reduce(0, &(&1 + &2))
-  end
+  def solve_checksum(input),
+    do: input |> Enum.map(&row_checksum/1) |> Enum.sum
 
   def row_checksum(row),
     do: row |> find_low_and_high |> difference
@@ -60,25 +55,16 @@ defmodule AdventOfCode2017.Day2.Part2 do
   def solve_puzzle,
     do: input() |> solve_checksum
 
-  def solve_checksum(input) do
-    input
-    |> Enum.map(&row_checksum/1)
-    |> Enum.reduce(0, &(&1 + &2))
-  end
+  def solve_checksum(input),
+    do: input |> Enum.map(&row_checksum/1) |> Enum.sum
 
   def row_checksum(row),
     do: row |> find_evenly_divisible |> hd |> divide_tuple
 
   defp find_evenly_divisible(list),
-    do: for x <- list, y <- list, x !== y, divisible?(x, y),
-      do: position_divisor(x, y)
+    do: for x <- list, y <- list, x > y, rem(x, y) === 0,
+      do: {x, y}
 
-  defp divisible?(x, y) when rem(x, y) === 0, do: true
-  defp divisible?(_, _), do: false
-
-  defp position_divisor(x, y) when x >= y, do: {x, y}
-  defp position_divisor(x, y), do: {y, x}
-
-  defp divide_tuple({x, y}), do: round(x / y)
+  defp divide_tuple({x, y}), do: div(x, y)
 
 end
