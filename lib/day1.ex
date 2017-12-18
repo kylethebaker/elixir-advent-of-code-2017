@@ -30,7 +30,6 @@ end
 #
 #  - 91212129 produces 9 because the only digit that matches the next one is
 #    the last digit, 9.
-#
 #------------------------------------------------------------------------------
 
 defmodule AdventOfCode2017.Day1.Part1 do

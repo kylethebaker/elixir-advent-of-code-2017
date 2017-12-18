@@ -32,7 +32,7 @@ end
 #
 #  - The third row's difference is 6
 #
-#  In this example, the spreadsheet's checksum would be 8 + 4 + 6 = 18
+# In this example, the spreadsheet's checksum would be 8 + 4 + 6 = 18
 #------------------------------------------------------------------------------
 
 defmodule AdventOfCode2017.Day2.Part1 do
@@ -83,8 +83,8 @@ end
 #  - In the second row, the two numbers are 9 and 3; the result is 3
 #
 #  - In the third row, the result is 2
-
-#  In this example, the sum of the results (checksum) would be 4 + 3 + 2 = 9
+#
+# In this example, the sum of the results (checksum) would be 4 + 3 + 2 = 9
 #------------------------------------------------------------------------------
 
 defmodule AdventOfCode2017.Day2.Part2 do
