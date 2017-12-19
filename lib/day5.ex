@@ -25,9 +25,8 @@ defmodule AdventOfCode2017.Day5 do
   def is_outside?(steps, step),
     do: not Map.has_key?(steps, step)
 
-  def jump(steps, current, jump_fn) do
-    Map.get_and_update(steps, current, jump_fn)
-  end
+  def jump(steps, current, jump_fn),
+    do: Map.get_and_update(steps, current, jump_fn)
 
   def create_steps_map(steps),
     do: 0..length(steps) |> Enum.to_list |> Enum.zip(steps) |> Map.new
