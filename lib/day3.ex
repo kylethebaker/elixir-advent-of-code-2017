@@ -29,7 +29,7 @@ defmodule AdventOfCode2017.Day3.Part1 do
   import AdventOfCode2017.Day3
   alias :math, as: Math
 
-  def solve do
+  def solve_puzzle do
     cell = input()
     ring = find_ring(cell)
     ring_size = ring_size(ring)
